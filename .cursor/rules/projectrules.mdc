@@ -1,0 +1,204 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Cursor Rules - Discord Bot Builder SaaS
+
+## Intro
+
+I am building 'botmaker', a no-code/low-code SaaS platform for creating, hosting, and managing Discord bots.
+
+### Overview
+
+It is a platform that enables users without coding knowledge to create functional Discord bots. The MVP will be a web application where users can design bot behavior through a visual interface, configure responses and commands, and deploy their bots directly to Discord servers. Users can iterate on their bots through:
+
+- Visual block-based programming
+- Direct configuration of bot responses
+- Real-time testing and deployment
+
+### UI Description
+
+Here is a hierarchical, indented bullet description of the DiscordBotify MVP, focusing on its functionality for creating and managing Discord bots:
+
+DiscordBotify Interface
+
+* Dashboard Section
+  * Overview of user's bots with status indicators (online/offline)
+  * Performance metrics (usage, commands triggered, errors)
+  * Quick actions (create, edit, deploy, pause)
+
+* Bot Builder Section
+  * Visual block editor for creating bot logic
+  * Command configuration panel
+  * Event handler setup (message received, user joined, etc.)
+  * Response templates (text, embeds, buttons)
+  * Conditional logic blocks (if/else statements)
+
+* Bot Settings Section
+  * Basic bot information (name, description, avatar)
+  * Discord credentials management
+  * Permissions configuration
+  * Integration settings
+
+* Deployment Section
+  * One-click deployment to Discord
+  * Version history and rollback options
+  * Status monitoring and logs
+  * Error reporting
+
+* User Account Section
+  * Subscription management
+  * Usage statistics
+  * API keys and external integrations
+  * Team collaboration settings (future feature)
+### User Workflow
+
+* Start with Bot Creation
+  * User signs up and creates a new bot project
+  * User configures basic bot information
+
+* Design Bot Behavior
+  * User adds command blocks to the visual editor
+  * User configures event handlers and responses
+  * User adds conditional logic to create more complex behaviors
+
+* Test and Deploy
+  * User tests the bot in a sandbox environment
+  * User deploys the bot to their Discord server
+  * User monitors bot performance and makes adjustments
+
+* Iterate and Improve
+  * User receives feedback from Discord server members
+  * User modifies bot behavior based on feedback
+  * User adds new features as needed
+
+This DiscordBotify MVP allows users with minimal technical knowledge to create powerful Discord bots through an intuitive visual interface, with seamless deployment and management capabilities.
+
+## Vision
+
+### Overview
+
+The vision is to become the go-to platform for Discord bot creation, fostering a community of bot builders and creating a marketplace for bot templates and components. It will build network effects through community contributions to the template library and peer support in the community forum. Revenue will be generated through tiered subscription plans, with additional revenue from premium templates in the marketplace. Growth will be driven by a freemium model and referral incentives, where users can earn credits or extended features by referring new users.
+
+### UI Description
+
+The UI for DiscordBotify is designed to make bot creation accessible while providing advanced features for power users:
+
+#### Header Section
+* Logo and app name
+* Global search
+* Notifications bell
+* User profile and settings
+* Help and documentation access
+
+#### Left Sidebar Navigation
+* Dashboard: Overview of all bots and activity
+* My Bots: List of user's created bots
+* Bot Builder: Access to the visual bot editor
+* Templates: Pre-built bot templates and components
+* Marketplace: Community-created templates and plugins
+* Analytics: Detailed usage and performance statistics
+* Community: Forum and knowledge base for users
+* Documentation: Guides and API references
+* Settings: Platform settings and account management
+
+#### Main Content Area
+* Welcome Dashboard
+  * Quick metrics (total bots, active bots, command usage)
+  * Recent activity feed
+  * Featured templates and community highlights
+  * Getting started guide for new users
+
+* Bot Creation Flow
+  * Step-by-step wizard for new bot creation
+  * Template selection
+  * Basic configuration
+  * Visual block editor
+  * Testing and deployment
+
+* Visual Editor
+  * Drag-and-drop interface for component placement
+  * Component palette with categorized blocks
+  * Connectors for creating logic flows
+  * Properties panel for configuring selected components
+  * Live preview of bot responses
+
+#### Overall Layout
+The interface follows a clean, modern design with an emphasis on usability. It progressively discloses complexity, allowing new users to start with templates while giving experienced users the tools to create sophisticated bots. Dark mode is available to match Discord's aesthetic, with color highlights for important actions and status indicators.
+
+This UI embodies the vision of a comprehensive yet accessible platform for Discord bot creation, suitable for users of all technical skill levels.
+
+## Technical
+
+### Overview
+
+The following elements of the stack are ones I'll build with:
+
+* Frontend
+  * Next.js using App Router
+  * TypeScript for type safety
+  * Tailwind CSS for styling
+  * ShadcnUI components for consistent UI elements
+  * React DnD for drag-and-drop functionality
+  * Zustand for state management
+  * React Flow for visual node-based editor
+
+* Backend
+  * Next.js API routes for serverless functions
+  * Supabase for database and authentication
+  * Discord.js for bot interactions
+  * Tanstack Query for data fetching and caching
+  * Zod for runtime type validation
+
+* Deployment
+  * Railway for hosting and deployment
+  * GitHub Actions for CI/CD
+  * Railway Redis for caching and rate limiting
+  * LogDNA for error tracking and monitoring
+
+I have intermediate experience with React, but I'm newer to Next.js App Router. For technical implementations involving Next.js, detailed explanations and code examples would be helpful. My app folder is src/app.
+
+### Project Structure
+
+The project follows this directory structure:
+
+```
+discord-bot-saas/
+├── .github/                # GitHub Actions workflows
+├── public/                 # Static assets
+├── src/
+│   ├── app/                # Next.js App Router
+│   │   ├── api/            # API Routes
+│   │   ├── dashboard/      # Dashboard pages
+│   │   ├── bot-builder/    # Bot building interface
+│   │   ├── settings/       # User settings
+│   │   └── auth/           # Authentication pages
+│   ├── components/         # React components
+│   │   ├── ui/             # UI components
+│   │   ├── bot-builder/    # Bot builder components
+│   │   └── dashboard/      # Dashboard components
+│   ├── lib/                # Shared utilities
+│   │   ├── discord/        # Discord.js integration
+│   │   ├── supabase/       # Supabase clients
+│   │   └── utils/          # Helper functions
+│   ├── services/           # Core business logic
+│   │   ├── bot-service/    # Bot management logic
+│   │   ├── runtime-service/# Bot runtime execution
+│   │   └── user-service/   # User management
+│   ├── hooks/              # React hooks
+│   ├── types/              # TypeScript types
+│   └── styles/             # Global styles
+├── supabase/               # Supabase configuration
+│   ├── functions/          # Edge Functions
+│   └── migrations/         # Database migrations
+└── scripts/                # Utility scripts
+```
+
+### Development Workflow
+
+1. Feature branches follow the naming convention: `feature/feature-name`
+2. Pull requests require passing tests and at least one review
+3. Use conventional commits for commit messages
+4. Deployments to staging are automatic; production requires manual approval
+5. Database migrations are versioned and applied automatically during deployment
